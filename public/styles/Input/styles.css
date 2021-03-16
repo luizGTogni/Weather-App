@@ -1,0 +1,36 @@
+.input {
+  height: 2.85rem;
+  width: 100%;
+  max-width: 65vh;
+
+  background: var(--gray-light);
+  color: var(--black);
+
+  box-sizing: border-box;
+  padding: 1.25rem;
+
+  border: 2px solid var(--yellow);
+  border-radius: 1rem;
+
+  display: flex;
+  align-items: center;
+
+  cursor: text;
+}
+
+.input__field {
+  width: 100%;
+  background: transparent;
+  color: var(--black);
+  
+  margin-left: 0.8rem;
+
+  outline: 0;
+  border: none;
+}
+
+.input__field::placeholder {
+  font-size: 0.85rem;
+  color: var(--gray-dark);
+}
+

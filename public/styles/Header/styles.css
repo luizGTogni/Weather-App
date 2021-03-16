@@ -1,0 +1,21 @@
+.header {
+  width: 100%;
+
+  font-size: 1.35rem;
+  font-weight: 500;
+
+  display: flex;
+}
+
+.header__title {
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+@media only screen and (min-width: 480px) {
+  .header {
+    font-size: 1.35rem;
+    text-align: left;
+  }
+} 

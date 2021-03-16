@@ -1,0 +1,46 @@
+.info {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  margin-top: 5rem;
+}
+
+.info__location {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.info__location span {
+  color: var(--gray-dark);
+  font-size: 1.45rem;
+  font-weight: 400;
+}
+
+.info__image-condition {
+  width: 15rem;
+  margin-top: 2rem;
+}
+
+.info__condition {
+  color: var(--gray);
+  font-size: 1.35rem;
+  font-weight: 500;
+  margin-top: 2rem;
+}
+
+.info__temperature {
+  margin-top: 1rem;
+  font-size: 5rem;
+  font-weight: 500;
+  align-self: center;
+}
+
+.info__temperature span {
+  color: var(--yellow);
+}
