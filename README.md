@@ -5,7 +5,7 @@
 
 ![Preview-Screens](https://github.com/luizGTogni/Weather-App/blob/main/screen.png)
 
-Se quiser ver ele online [clique aqui](https://x-calculator.vercel.app/).
+Se quiser ver ele online [clique aqui](https://weather-app-flame-mu.vercel.app/).
 
 ## Sobre este projeto
 
