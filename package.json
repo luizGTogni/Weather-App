@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --watch"
+    "build:dev": "webpack --watch",
+    "build": "webpack"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.10",
