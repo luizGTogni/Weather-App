@@ -1,7 +1,10 @@
 import Api from './Api';
+import SessionApi from './SessionApi';
+
 import { API_KEY } from '@env';
 
 const accuWeatherApi = new Api('http://dataservice.accuweather.com');
+const sessionApi = new SessionApi();
 
 const locationElement = document.getElementById('location');
 const weatherIconElement = document.getElementById('weather_icon');
@@ -25,16 +28,29 @@ class Weather {
     };
   }
 
+  searchCoords(lat, long) {
+    accuWeatherApi.get(`/locations/v1/cities/geoposition/search?apikey=${API_KEY}&q=${lat}%2C%20${long}`)
+      .then(response => {
+        console.log(response);
+        this.data.key = response.Key;
+        this.data.country = response.Country.LocalizedName;
+        this.data.city = response.LocalizedName;
+
+        this.getCurrentCondition();
+      })
+      .catch(error => console.log('error search:', error));
+  }
+
   searchCity(name) {
     accuWeatherApi.get(`/locations/v1/cities/search?apikey=${API_KEY}&q=${name}`)
-    .then(response => {
-      this.data.key = response[0].Key;
-      this.data.country = response[0].Country.LocalizedName;
-      this.data.city = response[0].LocalizedName;
+      .then(response => {
+        this.data.key = response[0].Key;
+        this.data.country = response[0].Country.LocalizedName;
+        this.data.city = response[0].LocalizedName;
 
-      this.getCurrentCondition();
-    })
-    .catch(error => console.log('error search:', error));
+        this.getCurrentCondition();
+      })
+      .catch(error => console.log('error search:', error));
   }
 
   getCurrentCondition() {
@@ -48,6 +64,7 @@ class Weather {
       this.data.temperatureCelsius = response[0].Temperature.Metric.Value;
       this.data.temperatureFahrenheit = response[0].Temperature.Imperial.Value;
       
+      sessionApi.save(this.data.city);
       this.renderInfo();
     })
     .catch(error => console.log('error condition:', error));
@@ -99,21 +116,22 @@ class Weather {
     return icon;
   }
 
-  createLocation() {
-    locationElement.innerHTML = `${this.data.city}, <span>${this.data.country}</span>`
+  createLocation(data) {
+    locationElement.innerHTML = `${data.city}, <span>${data.country}</span>`
   }
 
-  createWeatherInfo() {
-    const iconSelected = this.getWeatherIcon(this.data.weatherIcon); 
+  createWeatherInfo(data) {
+    const iconSelected = this.getWeatherIcon(data.weatherIcon); 
+
     weatherIconElement.src = `./assets/img/icons/0${iconSelected}.svg`
-    weatherIconElement.setAttribute('alt', this.data.weatherText);
-    weatherTextElement.textContent = this.data.weatherText;
-    weatherTemperatureElement.textContent = this.data.temperatureCelsius;
+    weatherIconElement.setAttribute('alt', data.weatherText);
+    weatherTextElement.textContent = data.weatherText;
+    weatherTemperatureElement.textContent = data.temperatureCelsius;
   }
 
   renderInfo(data = this.data) {
-    this.createLocation();
-    this.createWeatherInfo()
+    this.createLocation(data);
+    this.createWeatherInfo(data);
   }
 }
 
