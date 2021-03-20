@@ -57,6 +57,7 @@ $ npm install
 ## Construido com
 
 - [Babel](https://babeljs.io/) - Build the web app using new features of Javascript ES6
+- [Webpack](https://webpack.js.org/)
 
 
 ## Contribuindo
