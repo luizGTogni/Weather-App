@@ -3,7 +3,7 @@ import SessionApi from './SessionApi';
 
 import { API_KEY } from '@env';
 
-const accuWeatherApi = new Api('http://dataservice.accuweather.com');
+const accuWeatherApi = new Api('https://dataservice.accuweather.com');
 const sessionApi = new SessionApi();
 
 const locationElement = document.getElementById('location');
