@@ -9,6 +9,10 @@ class Api {
     const url = `${this.baseUrl}${params}`;
     const response = await fetch(url, {
       method: 'GET',
+      mode: 'cors',
+      cache: 'no-cache',
+      credentials: 'same-origin',
+      referrerPolicy: 'no-referrer'
     });
 
     return response.json();

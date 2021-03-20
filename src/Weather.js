@@ -31,7 +31,6 @@ class Weather {
   searchCoords(lat, long) {
     accuWeatherApi.get(`/locations/v1/cities/geoposition/search?apikey=${API_KEY}&q=${lat}%2C%20${long}`)
       .then(response => {
-        console.log(response);
         this.data.key = response.Key;
         this.data.country = response.Country.LocalizedName;
         this.data.city = response.LocalizedName;
